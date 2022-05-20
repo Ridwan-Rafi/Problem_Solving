@@ -21,10 +21,12 @@ int main()
             if(ar[in-1]>x)
             {
                 sm-=(ar[in-1]-x);
+                ar[in-1]=x;
             }
             else if(ar[in-1]<x)
             {
                 sm+=(x-ar[in-1]);
+                ar[n-1]=x;
             }
         }
         else if(qq==2)
