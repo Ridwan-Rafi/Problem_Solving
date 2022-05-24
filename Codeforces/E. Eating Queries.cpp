@@ -3,7 +3,7 @@ using namespace std;
 int main()
 {
     int t,n,ar[150011],q,cnt,l;
-    long long int sm,ss;
+    long long int sm,ss,sr[150011];
     scanf("%d",&t);
     while(t--)
     {
@@ -12,22 +12,22 @@ int main()
         for(int i=0;i<n;i++)
         {
             scanf("%d",&ar[i]);
-            sm+=ar[i];
         }
-        sort(ar,ar+n);
+        sort(ar,ar+n,greater<int>());
+        sr[0]=ar[0];
+        for(int i=1;i<n;i++)
+        {
+            sr[i]=ar[i]+sr[i-1];
+        }
+
         for(int j=0;j<q;j++)
         {
             cnt=ss=0;
             scanf("%d",&l);
-            if(l>sm)printf("-1\n");
+            if(l>sr[n-1])printf("-1\n");
             else{
-               for(int i=n-1;i>=0;i--)
-               {
-                   if(ss>=l)break;
-                   ss+=ar[i];
-                   cnt++;
-               }
-               printf("%d\n",cnt);
+               cnt=lower_bound(sr,sr+n,l)-sr;
+               printf("%d\n",cnt+1);
             }
         }
     }
