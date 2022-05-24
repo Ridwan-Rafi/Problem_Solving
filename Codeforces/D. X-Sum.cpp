@@ -26,13 +26,32 @@ int main()
                 {
                     sm=0;
                     // left up corner
-                    for(int x=i,y=j;(x>=0 && y>=0);x--,y--)sm=sm+a[x][y];
+                    for(int x=i,y=j;(x>=0 && y>=0);x--,y--)
+                    {
+                        sm=sm+a[x][y];
+                        //printf("left up sm=%d a=%d x=%d y=%d\n",sm,a[x][y],x,y);
+                    }
                     //right up
-                    for(int x=i,y=j;(x>=0 && y<m);x--,y++)sm=sm+a[x][y];
+                    for(int x=i,y=j;(x>=0 && y<m);x--,y++)
+                    {
+                        sm=sm+a[x][y];
+                       // printf("right up sm=%d a=%d x=%d y=%d\n",sm,a[x][y],x,y);
+                    }
+                    sm=sm-a[i][j];
                     //left down
-                    for(int x=i,y=j;(x<n && y>=0);x++,y--)sm=sm+a[x][y];
+                    for(int x=i,y=j;(x<n && y>=0);x++,y--)
+                    {
+                        sm=sm+a[x][y];
+                       // printf("left down sm=%d a=%d x=%d y=%d\n",sm,a[x][y],x,y);
+                    }
+                    sm=sm-a[i][j];
                     //right down
-                    for(int x=i,y=j;(x<n && y<m);x++,y++)sm=sm+a[x][y];
+                    for(int x=i,y=j;(x<n && y<m);x++,y++)
+                    {
+                        sm=sm+a[x][y];
+                        //printf("right down sm=%d a=%d x=%d y=%d\n",sm,a[x][y],x,y);
+                    }
+                    sm=sm-a[i][j];
 
                     mx=max(mx,sm);
 
