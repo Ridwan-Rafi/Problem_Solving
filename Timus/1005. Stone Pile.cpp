@@ -2,28 +2,27 @@
 using namespace std;
 int main()
 {
-    int n,ar[30],f=0,w=0,w1=0,i,j,ans;
+    int n,ar[30],f=0,w=0,w1=0,ans=1000000001,tl=0;
     cin>>n;
-    for( i=0;i<n;i++)
+    for(int i=0;i<n;i++)
     {
         cin>>ar[i];
+        tl+=ar[i];
     }
-    sort(ar,ar+n);
+    //sort(ar,ar+n);
 
-    i=0;j=n-1;
-    w1=ar[j--];
-  while(i<j)
+    for(int i=0;i<n;i++)
+    {
+        w=ar[i];
+        for(int j=0;j<n;j++)
         {
-        if(w<w1)
-        {
-            f=1;
-            w+=ar[i++];
-        }
-        else{
-             f=0;
-            w1+=ar[j--];
+            w1=tl-w;
+         f=abs(w1-w);
+        ans=min(ans,f);
+        if(j==i)continue;
+
+            w+=ar[j];
         }
     }
-
-    cout<<abs(w1-w)<<endl;
+    cout<<ans<<endl;
 }
