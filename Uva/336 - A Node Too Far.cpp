@@ -7,10 +7,10 @@ int level[10000];
 int visited[100];
 long long int no[90],it;
 
-int bfs(long long int st,int ttl)
+long long int bfs(long long int st,long long int ttl)
 {
     long long int node;
-    int cnt=1;
+    long long int cnt=1;
     queue<long long int>q;
     q.push(st);
     level[st]=0;
@@ -54,8 +54,8 @@ void z()
 
 int main()
 {
-    freopen("input.txt","r",stdin);
-    int n,ttl,ret,cn=1,ver;
+    //freopen("input.txt","r",stdin);
+   long long int n,ttl,ret,cn=1,ver;
 long long int u,v,st,tmp;
 
     while(cin>>n)
@@ -94,10 +94,10 @@ ver=m.size();
             tmp=st;
             st=m[st];
             if(st==0)
-                printf("Case %d: %d nodes not reachable from node %d with TTL = %d.\n",cn++,ver,tmp,ttl);
+                printf("Case %d: %d nodes not reachable from node %lld with TTL = %lld.\n",cn++,ver,tmp,ttl);
             else{
             ret=bfs(st,ttl);
-            printf("Case %d: %d nodes not reachable from node %d with TTL = %d.\n",cn++,ver-ret,no[st],ttl);
+            printf("Case %d: %d nodes not reachable from node %lld with TTL = %lld.\n",cn++,ver-ret,no[st],ttl);
             }
         }
     }

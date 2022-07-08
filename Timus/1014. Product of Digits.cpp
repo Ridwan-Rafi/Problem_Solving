@@ -2,19 +2,32 @@
 using namespace std;
 int main()
 {
-    int n,ar[100000],i=0;
+    int n,ar[100000],i=0,f=0;
     cin>>n;
-    while(n!=1)
+    if(n==0)cout<<10<<endl;
+    else if(n==1)cout<<1<<endl;
+    else
     {
-        for(int j=2;j<10;j++)
+        while(n!=1)
         {
-            if(n%j==0)
+            for(int j=9; j>1; j--)
             {
-                ar[i++]=j;
-                n/=j;
-                break;
+                if(n%j==0)
+                {
+                    f=1;
+                    ar[i++]=j;
+                    n/=j;
+                    break;
+                }
+                f=0;
             }
+            if(f==0)break;
+        }
+        if(f==0)printf("-1\n");
+        else
+        {
+            for(int j=i-1; j>=0; j--)cout<<ar[j];
+            cout<<endl;
         }
     }
-    for(int j=0;j<i;j++)cout<<ar[j];
 }
