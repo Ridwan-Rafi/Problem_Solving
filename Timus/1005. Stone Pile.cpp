@@ -2,27 +2,36 @@
 using namespace std;
 int main()
 {
-    int n,ar[30],f=0,w=0,w1=0,ans=1000000001,tl=0;
+    long long int n,ar[30],r=0,l=0,ans=1000000001,tl=0,p,b,o;
     cin>>n;
-    for(int i=0;i<n;i++)
+    for(int i=0; i<n; i++)
     {
         cin>>ar[i];
         tl+=ar[i];
     }
-    //sort(ar,ar+n);
+   p=1;
+   for(int i=0;i<n;i++)
+   {
+       p=p*2;
+   }
+   for(int i=1;i<p;i++)
+   {
+       b=i;
+       l=0,r=0;
+       for(int j=0;j<n;j++)
+       {
+           o=1<<j;
+           if(b&o)
+           {
+           //    printf("1 ");
+               r+=ar[j];
+           }
+         //  else printf("0 ");
+       }
+       //printf("\n");
+       l=tl-r;
+       ans=min(ans,abs(l-r));
+   }
 
-    for(int i=0;i<n;i++)
-    {
-        w=ar[i];
-        for(int j=0;j<n;j++)
-        {
-            w1=tl-w;
-         f=abs(w1-w);
-        ans=min(ans,f);
-        if(j==i)continue;
-
-            w+=ar[j];
-        }
-    }
     cout<<ans<<endl;
 }
